@@ -2,6 +2,8 @@ import { useRef } from "react";
 import { useState } from "react";
 import CustomButton from "./CustomButton";
 import { TiLocationArrow } from "react-icons/ti";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 const Hero = () => {
   const [currIndex, setCurrIndex] = useState(1); // for current playing video
@@ -19,9 +21,35 @@ const Hero = () => {
   const handleMiniVidClick = () => {
     setHasClicked(true);
     // setCurrIndex((prev) => prev + 1);
-    setCurrIndex(upcomingVidIndex);
+    setCurrIndex(upcomingVidIndex); // using modulo to set curr index now
   };
   const handleVideoLoad = () => {};
+
+  useGSAP(
+    () => {
+      if (hasClicked) {
+        gsap.set("#next-video", { visibility: "visible" });
+
+        gsap.to("#next-video", {
+          transformOrigin: "center center",
+          scale: 1,
+          height: "100%",
+          width: "100%",
+          duration: 1,
+          onStart: nextVidRef.current.play(),
+          ease: "sine.inOut",
+        });
+
+        gsap.from("#current-video", {
+          scale: 0,
+          transformOrigin: "center center",
+          duration: 1.2,
+          ease: "power1.out",
+        });
+      }
+    },
+    { dependencies: [currIndex], revertOnUpdate: true }
+  );
 
   return (
     <div className="relative h-dvh w-screen overflow-x-hidden">
@@ -36,6 +64,7 @@ const Hero = () => {
               onClick={handleMiniVidClick}
             >
               <video
+                id="current-video"
                 ref={nextVidRef}
                 src={getVidSrc(upcomingVidIndex)} // smaller one will always have the next video src
                 loop
@@ -45,22 +74,25 @@ const Hero = () => {
               />
             </div>
           </div>
+
           {/* zoom effect video element below */}
           <video
+            id="next-video"
             ref={nextVidRef}
             src={getVidSrc(currIndex)}
             loop
             muted
             autoPlay
-            className="absolute-center invisible size-64 scale-150 object-cover"
+            className="absolute-center z-10 invisible size-64 scale-150 object-cover"
           />
 
+          {/* full screen video */}
           <video
             src={getVidSrc(currIndex === totalVids - 1 ? 1 : currIndex)}
             loop
             muted
             autoPlay
-            className="absolute left-0 top-0 size-full object-cover"
+            className="absolute size-full object-cover"
           />
         </div>
         <div className="absolute top-5 left-5 z-30 text-blue-75">

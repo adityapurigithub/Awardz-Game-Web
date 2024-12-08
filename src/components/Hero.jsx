@@ -4,7 +4,9 @@ import CustomButton from "./CustomButton";
 import { TiLocationArrow } from "react-icons/ti";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
 
+gsap.registerPlugin(ScrollTrigger);
 const Hero = () => {
   const [currIndex, setCurrIndex] = useState(1); // for current playing video
   const [hasClicked, setHasClicked] = useState(false);
@@ -51,11 +53,31 @@ const Hero = () => {
     { dependencies: [currIndex], revertOnUpdate: true }
   );
 
+  useGSAP(() => {
+    gsap.set("#video-frame", {
+      // for diffrent clip-path, can be generated from https://bennettfeely.com/clippy/  (remember to % with 0 also)
+      clipPath: "polygon(14% 0%, 82% 0%, 90% 90%, 0% 100%)",
+      borderRadius: "0 0 50% 50%",
+    });
+
+    gsap.from("#video-frame", {
+      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+      borderRadius: "0 0 0 0",
+      ease: "power1.inOut",
+      scrollTrigger: {
+        trigger: "#video-frame",
+        start: "center center",
+        end: "bottom center ",
+        scrub: true,
+      },
+    });
+  });
+
   return (
     <div className="relative h-dvh w-screen overflow-x-hidden">
       <div
         id="video-frame"
-        className="z-10 relative h-full w-100 rounded-lg bg-blue-75"
+        className="relative h-full w-100 rounded-lg bg-blue-75"
       >
         <div>
           <div className="z-20 mask-clip-path absolute-center rounded-lg cursor-pointer overflow-hidden">
@@ -68,6 +90,7 @@ const Hero = () => {
                 ref={nextVidRef}
                 src={getVidSrc(upcomingVidIndex)} // smaller one will always have the next video src
                 loop
+                // autoPlay
                 muted
                 className="size-72 scale-150 object-cover"
                 onLoadedData={handleVideoLoad}
@@ -111,7 +134,7 @@ const Hero = () => {
           />
         </div>
 
-        <h1 className="special-font hero-heading absolute bottom-5 right-5 z-30 text-blue-75">
+        <h1 className="special-font hero-heading absolute bottom-5 right-5 z-30  text-blue-75">
           G<b>a</b>ming
         </h1>
         {/* below one is used for showing once we scroll the UI */}

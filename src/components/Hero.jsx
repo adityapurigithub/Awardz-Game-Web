@@ -55,9 +55,9 @@ const Hero = () => {
 
   useGSAP(() => {
     gsap.set("#video-frame", {
-      // for diffrent clip-path, can be generated from https://bennettfeely.com/clippy/  (remember to % with 0 also)
-      clipPath: "polygon(14% 0%, 82% 0%, 90% 90%, 0% 100%)",
-      borderRadius: "0 0 50% 50%",
+      // for diffrent clip-path, can be generated from https://bennettfeely.com/clippy/  (remember to add % with 0 also)
+      clipPath: "polygon(10% 0%, 82% 0%, 90% 90%, 0% 90%)",
+      borderRadius: "100%",
     });
 
     gsap.from("#video-frame", {
@@ -67,7 +67,7 @@ const Hero = () => {
       scrollTrigger: {
         trigger: "#video-frame",
         start: "center center",
-        end: "bottom center ",
+        end: "bottom center",
         scrub: true,
       },
     });
@@ -105,7 +105,7 @@ const Hero = () => {
             src={getVidSrc(currIndex)}
             loop
             muted
-            autoPlay
+            // autoPlay
             className="absolute-center z-10 invisible size-64 scale-150 object-cover"
           />
 
@@ -114,7 +114,7 @@ const Hero = () => {
             src={getVidSrc(currIndex === totalVids - 1 ? 1 : currIndex)}
             loop
             muted
-            autoPlay
+            // autoPlay
             className="absolute size-full object-cover"
           />
         </div>
@@ -128,9 +128,10 @@ const Hero = () => {
           </p>
           <CustomButton
             icon={<TiLocationArrow />}
-            title="Watch Trailer"
+            title="Watch Next Trailer"
             id="watch-trailer"
             className="!bg-yellow-300 mt-4 hover:!bg-yellow-400 transition-all duration-200"
+            onClick={handleMiniVidClick}
           />
         </div>
 

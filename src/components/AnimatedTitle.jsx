@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 
@@ -30,7 +31,10 @@ const AnimatedTitle = ({ title, className }) => {
   return (
     <div ref={containerRef} className={`animated-title ${className}`}>
       {title.split("<br/>").map((line, index) => (
-        <div className="flex-center max-w-full flex-wrap gap-2 px-10 md:gap-3">
+        <div
+          key={index}
+          className="flex-center max-w-full flex-wrap gap-2 px-10 md:gap-3"
+        >
           {line.split(" ").map((word, i) => (
             <span
               key={i}

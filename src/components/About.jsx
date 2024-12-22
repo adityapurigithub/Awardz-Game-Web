@@ -30,9 +30,10 @@ const About = () => {
     });
 
     clipAnimation.to(".mask-path-clip", {
-      width: "95vw",
-      height: "99vh",
-      border: "0",
+      width: "100vw",
+      height: "100vh",
+      border: 0,
+      borderRadius: 0,
     });
   });
   return (

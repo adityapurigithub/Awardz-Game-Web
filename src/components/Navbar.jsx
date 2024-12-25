@@ -52,7 +52,12 @@ const Navbar = () => {
     >
       <header className="absolute top-1/2 w-full -translate-y-1/2">
         <nav className="flex items-center justify-between">
-          <img className="w-12" src="/img/logo.png" alt="nav-logo" />
+          <img
+            className="w-12"
+            src="/img/logo.png"
+            alt="nav-logo"
+            onClick={() => window.scrollTo(0, 0)}
+          />
 
           <div className="lg:flex hidden">
             {navItems.map((item) => (

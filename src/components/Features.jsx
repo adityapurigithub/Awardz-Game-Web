@@ -29,57 +29,60 @@ const Features = () => {
             />
           </div>
         </Tilt>
-        <div className="grid grid-cols-2 gap-6 mb-6  h-[100vh] w-full overflow-hidden rounded-md">
-          <div className="bento-tilt_1 row-span-1 md:row-span-2 md:col-span-1 border-hlsa">
-            <BentoCard
-              videoSrc="videos/feature-2.mp4"
-              title={
-                <>
-                  Z<b>!</b>G<b>M</b>A
-                </>
-              }
-              description="A cross-platform metagame app, turning your activity across Web2 & Web3 games into rewarding adventure."
-            />
-          </div>
-          <div className="bento-tilt_1 md:col-span-1 border-hlsa">
-            <BentoCard
-              videoSrc="videos/feature-4.mp4"
-              title={
-                <>
-                  AZ<b>U</b>r<b>E</b>
-                </>
-              }
-              description="A cross world AI Agent - Elevating your gameplay to be more fun and productive."
-            />
-          </div>
-          <div className="bento-tilt_1 md:col-span-1 border-hlsa">
-            <BentoCard
-              videoSrc="videos/feature-3.mp4"
-              title={
-                <>
-                  N<b>E</b>X<b>U</b>S
-                </>
-              }
-              description="A gamified social hub, adding a new dimension of play to social interaction for Web3 communities."
-            />
-          </div>
 
-          <div className="bento-tilt_2 bento-title special-font bg-violet-300 md:p-5 p-3">
-            <h1 className="max-w-64 text-black">
-              M<b>O</b>re C<b>O</b>m<b>I</b>ng So<b>o</b>n!
-            </h1>
-            <TiLocationArrow className="absolute right-4 bottom-5 scale-[2]" />
+        <Tilt tiltMaxAngleX={2} tiltMaxAngleY={2} transitionSpeed={1000}>
+          <div className="grid grid-cols-2 gap-6 mb-6 h-[100vh] md:h-[120vh] w-full overflow-hidden rounded-md">
+            <div className="bento-tilt_1 row-span-1 md:row-span-2 md:col-span-1 border-hlsa">
+              <BentoCard
+                videoSrc="videos/feature-2.mp4"
+                title={
+                  <>
+                    Z<b>!</b>G<b>M</b>A
+                  </>
+                }
+                description="A cross-platform metagame app, turning your activity across Web2 & Web3 games into rewarding adventure."
+              />
+            </div>
+            <div className="bento-tilt_1 md:col-span-1 border-hlsa">
+              <BentoCard
+                videoSrc="videos/feature-4.mp4"
+                title={
+                  <>
+                    AZ<b>U</b>r<b>E</b>
+                  </>
+                }
+                description="A cross world AI Agent - Elevating your gameplay to be more fun and productive."
+              />
+            </div>
+            <div className="bento-tilt_1 md:col-span-1 border-hlsa">
+              <BentoCard
+                videoSrc="videos/feature-3.mp4"
+                title={
+                  <>
+                    N<b>E</b>X<b>U</b>S
+                  </>
+                }
+                description="A gamified social hub, adding a new dimension of play to social interaction for Web3 communities."
+              />
+            </div>
+
+            <div className="bento-tilt_2 bento-title special-font bg-violet-300 md:p-5 p-3">
+              <h1 className="max-w-64 text-black">
+                M<b>O</b>re C<b>O</b>m<b>I</b>ng So<b>o</b>n!
+              </h1>
+              <TiLocationArrow className="absolute right-4 bottom-5 scale-[2]" />
+            </div>
+            <div className="bento-tilt_2">
+              <video
+                src="videos/feature-5.mp4"
+                autoPlay
+                loop
+                muted
+                className="size-full object-cover object-center"
+              />
+            </div>
           </div>
-          <div className="bento-tilt_2">
-            <video
-              src="videos/feature-5.mp4"
-              autoPlay
-              loop
-              muted
-              className="size-full object-cover object-center"
-            />
-          </div>
-        </div>
+        </Tilt>
       </div>
     </section>
   );

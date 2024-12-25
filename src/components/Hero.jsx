@@ -105,7 +105,7 @@ const Hero = () => {
             src={getVidSrc(currIndex)}
             loop
             muted
-            // autoPlay
+            autoPlay
             className="absolute-center z-10 invisible size-64 scale-150 object-cover"
           />
 

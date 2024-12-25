@@ -7,6 +7,14 @@
 html {
   scroll-behavior: smooth;
 }
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 149, 255, 0.825);
+  border-radius: 12px;
+}
 
 body {
   width: 100dvw;
@@ -52,7 +60,7 @@ body {
   }
 
   .floating-nav-bg {
-    @apply bg-black rounded-lg;
+    @apply bg-black bg-opacity-50 backdrop-blur-md shadow-md rounded-lg;
   }
 
   .absolute-center {

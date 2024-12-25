@@ -48,7 +48,7 @@ const Navbar = () => {
   return (
     <div
       ref={navRef}
-      className="fixed sm:top-2 inset-x-0 z-50 h-16 border-0 duration-500 transition-all sm:inset-x-5"
+      className="fixed sm:top-3 inset-x-0 z-50 h-16 border-0 duration-500 transition-all sm:inset-x-3"
     >
       <header className="absolute top-1/2 w-full -translate-y-1/2">
         <nav className="flex items-center justify-between">
